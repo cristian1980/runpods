@@ -41,5 +41,13 @@ function git_clone_and_lock() {
 # --- Essentials & Tools ---
 git_clone_and_lock "https://github.com/cristian1980/ComfyUI-Caption-Cleaner.git" ""
 
-
+# download live provision start script
+echo "Downloading live provision script..."
+curl -o /live_provision.sh https://raw.githubusercontent.com/cristian1980/runpods/refs/heads/main/live_provision.sh
+chmod +x /live_provision.sh
+# execute live provision script
+echo "Executing live provision script..."
+/live_provision.sh
+# start ComfyUI
+echo "Starting ComfyUI..."
 /start.sh

@@ -1,0 +1,10 @@
+FROM runpod/worker-comfyui:5.5.1-base
+# Copy your provision script into the container (if it's not already there)
+COPY provisioning.sh /provisioning.sh
+COPY run_time_provision.sh /run_time_provision.sh
+
+# Make sure it is executable
+RUN chmod +x /provisioning.sh && chmod +x /run_time_provision.sh && /provisioning.sh && rm -rf /root/.cache/
+
+# Override the CMD to run your new script
+CMD ["/run_time_provision.sh"]
